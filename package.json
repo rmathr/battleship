@@ -1,0 +1,33 @@
+{
+  "name": "battleship",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "webpack",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rmathr/battleship.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rmathr/battleship/issues"
+  },
+  "homepage": "https://github.com/rmathr/battleship#readme",
+  "devDependencies": {
+    "@babel/core": "^7.21.8",
+    "@babel/preset-env": "^7.21.5",
+    "babel-jest": "^29.5.0",
+    "gh-pages": "^5.0.0",
+    "jest": "^29.5.0",
+    "mini-css-extract-plugin": "^2.7.5",
+    "webpack": "^5.82.1",
+    "webpack-cli": "^5.1.1"
+  }
+}
