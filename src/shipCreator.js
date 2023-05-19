@@ -8,7 +8,9 @@ class Ship{
         this.hits += 1
     }
     isSunk(){
-        return this.size <= this.hits
+        this.sunk = this.size > this.hits ? false : true
+        // console.log(this.sunk)
+        return this.sunk
     }
 }
 
