@@ -18,15 +18,17 @@ class Gameboard{
         this.sunkShips = 0
     }
     placeShip(ship, coordinates){
-        this.placedShips.push(ship)
-        for(let i = 0; i < ship.size; i++){
-            this.board[coordinates[0]][coordinates[1]+i] = ship.size 
-        }
+            this.placedShips.push(ship)
+            for(let i = 0; i < ship.size; i++){
+                this.board[coordinates[0]][coordinates[1]+i] = ship.size 
+            }   
         return this.board
     }
     receiveAttack(coordinates){
         let cell = this.board[coordinates[0]][coordinates[1]]
-        
+        if(this.board[coordinates[0]][coordinates[1]] === "hit" || this.board[coordinates[0]][coordinates[1]] === "missed"){
+            return "invalid coordinates"
+        }
         if(this.board[coordinates[0]][coordinates[1]] != "0"){
             const ship = this.placedShips.filter(ship => ship.size == this.board[coordinates[0]][coordinates[1]])
             ship[0].hit()
@@ -44,7 +46,7 @@ class Gameboard{
     }
     verifyActiveShips(){
         let activeShips = this.placedShips.filter(ship => ship.sunk === false)
-        // console.log(activeShips[0])
+        // console.log(activeShips)
         activeShips.forEach(ship => {
             ship.isSunk()
         })
