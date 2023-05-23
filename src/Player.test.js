@@ -36,6 +36,12 @@ test('Player 1 attacking the enemy Gameboard (hit)', () => {
     expect(playerOne.attackBoard(playerTwo, [3,3])).toStrictEqual("hit in [3,3]")
 })
 
+test('Player 2 making a random attack at Player 1', () => {
+    const playerOne = new Player()
+    const playerTwo = new Player()
+    expect(playerTwo.randomAttack(playerOne)).not.toBe(false)
+})
+
 test("Report if player's ships have been sunk", () => {
     const playerOne = new Player()
     const playerTwo = new Player()

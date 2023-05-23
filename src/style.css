@@ -56,3 +56,11 @@ body{
     border: none;
     margin-bottom: 45px;
 }
+
+/* #rightGameboard > #gameCell\#55{
+    background-color: blueviolet;
+} */
+
+/* #rightGameboard > button.game-cell{
+    background-color: blueviolet
+} */

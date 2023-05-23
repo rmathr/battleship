@@ -1,3 +1,4 @@
+import interactDOM from "./DOMinteraction"
 import Ship from "./shipCreator"
 
 class Gameboard{
@@ -24,10 +25,10 @@ class Gameboard{
             }   
         return this.board
     }
-    receiveAttack(coordinates){
-        let cell = this.board[coordinates[0]][coordinates[1]]
+    receiveAttack(coordinates, container){
+        // let cell = this.board[coordinates[0]][coordinates[1]]
         if(this.board[coordinates[0]][coordinates[1]] === "hit" || this.board[coordinates[0]][coordinates[1]] === "missed"){
-            return "invalid coordinates"
+            return false
         }
         if(this.board[coordinates[0]][coordinates[1]] != "0"){
             const ship = this.placedShips.filter(ship => ship.size == this.board[coordinates[0]][coordinates[1]])
@@ -37,6 +38,9 @@ class Gameboard{
         } else if(this.board[coordinates[0]][coordinates[1]] === "0") {
             this.board[coordinates[0]][coordinates[1]] = "missed"
         }
+        const elementId = 'gameCell' + `${coordinates[0]}${coordinates[1]}`
+        console.log(elementId)
+        interactDOM().updateElementValue(container, elementId, this.board[coordinates[0]][coordinates[1]])
         return `${this.board[coordinates[0]][coordinates[1]]} in [${coordinates}]`
     }
     reportMissedAttacks(){

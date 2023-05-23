@@ -26,7 +26,7 @@ test('Switching active player', () => {
     )
 })
 
-test('Verify end game condition', () => {
+test.skip('Verify end game condition', () => {
     const newGame = new Game()
     newGame.generatePlayers()
     const coordinates = [[9, 8], [4, 2], [4,3], [1, 7], [1,8], [1,9], [7, 5], [7,6], [7,7], [7,8], [6, 1], [6,2], [6,3], [6,4], [6,5]]

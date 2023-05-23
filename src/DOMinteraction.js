@@ -27,13 +27,13 @@ const interactDOM = function(){
         for(let i = 0; i < array.length; i++){
             for(let j = 0; j < array[i].length; j++){
                 let cell             
-                cell = interactDOM().createElementWithClassAndId('button', 'game-cell', `gameCell#${i}${j}`)
+                cell = interactDOM().createElementWithClassAndId('button', 'game-cell', `gameCell${i}${j}`)
                 cell.value = array[i][j]
                 cell.textContent = `${array[i][j]}`
                 container.appendChild(cell)
             }
         }
-
+        
 
         // const newArray = _.flatten(array)
         // console.log(newArray)
@@ -46,6 +46,42 @@ const interactDOM = function(){
         // }
     }
 
+    const updateElementValue = function(container, elementId, text){
+        const cell = document.querySelector(`#${container} > #${elementId}`)
+        cell.textContent = text 
+    }
+
+    const handleWinAnimation = function(){
+        const buttons = document.querySelectorAll('#rightGameboard > button.game-cell')
+        buttons.forEach(button => button.disabled = true)
+    }
+
+
+
+    
+
+    const returnClickedCoordinates = function(event){
+            const coordinates = []
+            coordinates.push(+event.target.id.replaceAll('gameCell', '').charAt(0)) 
+            coordinates.push(+event.target.id.replaceAll('gameCell', '').charAt(1)) 
+            console.log(coordinates)
+            return coordinates
+            // console.log(playerOne.attackBoard(playerTwo, coordinates))
+    }
+
+    // const returnClickedCoordinates = function(gameboard){
+    //     const gameboardContainer = interactDOM().hookDOMelement(gameboard)  
+    //     gameboardContainer.addEventListener('mousedown', e => {
+    //         const coordinates = []
+    //         coordinates.push(+e.target.id.replaceAll('gameCell#', '').charAt(0)) 
+    //         coordinates.push(+e.target.id.replaceAll('gameCell#', '').charAt(1)) 
+    //         console.log(coordinates)
+    //         return coordinates
+    //         // console.log(playerOne.attackBoard(playerTwo, coordinates))
+    //     }) 
+    // }
+
+
     const formReset = function(formId){
     const form = interactDOM().hookDOMelement(`${formId}`)
     form.reset()    
@@ -57,6 +93,9 @@ const interactDOM = function(){
         getInputValue, 
         appendElementAndDefineContent,
         formReset,
+        updateElementValue,
+        handleWinAnimation,
+        returnClickedCoordinates
     }
 
 
