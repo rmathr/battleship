@@ -3,10 +3,19 @@ import Gameboard from "./gameboardCreator"
 import Ship from "./shipCreator"
 
 
-function generateCoordinates(){
+function generateCoordinates(size, array){
     const randomArray = []
-    for(let i = 0; i < 2; i++){
-        randomArray[i] = Math.floor(Math.random() * 9);
+    if(arguments.length < 1){
+        for(let i = 0; i < 2; i++){
+            randomArray[i] = Math.floor(Math.random() * 9)
+        }
+    }
+    if(arguments.length === 1){
+        randomArray[0] = Math.floor(Math.random() * 9)
+        randomArray[1] = Math.floor(Math.random() * (9 - size))
+    } else if(arguments.length > 1) {
+        randomArray[0] = Math.floor(Math.random() * 9)
+        randomArray[1] = Math.floor(Math.random() * (9 - size))
     }
     return randomArray
 }
@@ -19,7 +28,7 @@ function generateCoordinates(){
 
 
 
-export default class Player{
+class Player{
     constructor(){
         this.board = new Gameboard()
     }
@@ -43,3 +52,4 @@ export default class Player{
     }
 }
 
+export { generateCoordinates, Player }

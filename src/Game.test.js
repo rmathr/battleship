@@ -1,6 +1,6 @@
 
 import Game from "./Game";
-import Player from "./Player";
+import {Player} from "./Player";
 
 
 test('Reset active player', () => {

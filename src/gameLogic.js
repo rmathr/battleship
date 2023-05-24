@@ -1,4 +1,4 @@
-import Player from "./Player";
+import {Player} from "./Player";
 import Gameboard from "./gameboardCreator";
 import Ship from "./shipCreator";
 import interactDOM from "./DOMinteraction";

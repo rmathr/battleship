@@ -29,7 +29,7 @@ const interactDOM = function(){
                 let cell             
                 cell = interactDOM().createElementWithClassAndId('button', 'game-cell', `gameCell${i}${j}`)
                 cell.value = array[i][j]
-                cell.textContent = `${array[i][j]}`
+                cell.textContent = `${array[i][j] == 0 ? '' : array[i][j]}`
                 container.appendChild(cell)
             }
         }
