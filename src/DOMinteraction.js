@@ -14,6 +14,10 @@ const interactDOM = function(){
         return elem
     }
 
+    const returnAllMatchingElements = function(className){
+        return document.querySelectorAll(`.${className}`)
+    }
+
     const getInputValue = function(idName){
         return interactDOM().hookDOMelement(idName).value
     }
@@ -33,17 +37,19 @@ const interactDOM = function(){
                 container.appendChild(cell)
             }
         }
-        
+    }
 
-        // const newArray = _.flatten(array)
-        // console.log(newArray)
-        // for (let i = 0; i < newArray.length; i++){
-        //         let cell             
-        //         cell = interactDOM().createElementWithClassAndId('button', 'game-cell', `gameCell#${i}`)
-        //         cell.value = newArray[i]
-        //         cell.textContent = `${newArray[i]}`
-        //         container.appendChild(cell)
-        // }
+    const generatePositioningGameboard = function(container) {
+        while (container.hasChildNodes()){
+            container.removeChild(container.firstChild)
+            }
+        for(let i = 0; i < 10; i++){
+            for(let j = 0; j < 10; j++){
+                let cell = interactDOM().createElementWithClassAndId('button', 'game-cell', `gameCell${i}${j}`)
+                cell.value = `${i}${j}`
+                container.appendChild(cell)
+            }
+        }
     }
 
     const updateElementValue = function(container, elementId, text){
@@ -86,16 +92,28 @@ const interactDOM = function(){
     const form = interactDOM().hookDOMelement(`${formId}`)
     form.reset()    
     }
+
+    const hide = function(element){
+        element.style.display = 'none'
+    }
+
+    const show = function(element){
+        element.style.display = 'flex'
+    }
     
     return { 
         createElementWithClassAndId, 
         hookDOMelement, 
         getInputValue, 
+        returnAllMatchingElements,
         appendElementAndDefineContent,
         formReset,
+        generatePositioningGameboard,
         updateElementValue,
         handleWinAnimation,
-        returnClickedCoordinates
+        returnClickedCoordinates,
+        hide,
+        show
     }
 
 

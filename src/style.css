@@ -57,6 +57,95 @@ body{
     margin-bottom: 45px;
 }
 
+.ships-placement{
+    width: 450px;
+    height: 600px;
+    background-color: cornsilk;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 12px;
+}
+
+.placement-board{
+    width: 300px;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+
+.placement-board > .game-cell, .ship-square{
+    width: 29px;
+    height: 29px;
+    background-color: aqua;
+    border: 1px solid white;
+}
+
+.cells-ship{
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    height: fit-content;
+    margin-bottom: 5px;
+}
+
+.ships-selection{
+    margin-top: 36px;
+    padding: 0 5px;
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    width: 300px;
+}
+
+#fiveCellsShip > .ship-square{
+    background-color: red;
+}
+
+#fourCellsShip > .ship-square{
+    background-color: blue;
+}
+
+#threeCellsShip > .ship-square{
+    background-color: yellow;
+}
+
+#twoCellsShip > .ship-square{
+    background-color: green;
+}
+
+#oneCellShip > .ship-square{
+    background-color: plum;
+}
+
+.game-cell.plum{
+    background-color: plum;
+}
+
+.game-cell.red{
+    background-color: red;
+}
+
+.game-cell.green{
+    background-color: green;
+}
+
+.game-cell.yellow{
+    background-color: yellow;
+}
+
+.game-cell.blue{
+    background-color: blue;
+}
+
+
 /* #rightGameboard > #gameCell\#55{
     background-color: blueviolet;
 } */

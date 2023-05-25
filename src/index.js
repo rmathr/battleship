@@ -5,6 +5,7 @@ import { generatePlayers } from "./gameLogic"
 import Game from "./Game"
 import _ from 'lodash'
 import interactDOM from "./DOMinteraction"
+import positioningShips from "./positioningShips"
 
 
 const newGame = new Game()
@@ -14,9 +15,13 @@ console.log(newGame.activePlayer)
 
 // const startGame = interactDOM().hookDOMelement('startGame')
 // startGame.addEventListener('mousedown', e => {
-//     newGame.generatePlayers()
-//     console.log(newGame.verifyEndGame())
+//     const shipsPlacement = interactDOM().hookDOMelement('shipsPlacement')
+//     interactDOM().show(shipsPlacement)
+    
+//     // newGame.generatePlayers()
+//     // console.log(newGame.verifyEndGame())
 // })
+positioningShips()
 
 console.log(newGame.verifyEndGame().length)
 
