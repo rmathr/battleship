@@ -10,8 +10,8 @@ import positioningShips from "./positioningShips"
 
 const newGame = new Game()
 console.log(newGame)
-newGame.generatePlayers()
-console.log(newGame.activePlayer)
+// newGame.generatePlayers()
+// console.log(newGame.activePlayer)
 
 // const startGame = interactDOM().hookDOMelement('startGame')
 // startGame.addEventListener('mousedown', e => {
@@ -23,7 +23,7 @@ console.log(newGame.activePlayer)
 // })
 positioningShips()
 
-console.log(newGame.verifyEndGame().length)
+// console.log(newGame.verifyEndGame().length)
 
 
 gameLogic(newGame)

@@ -27,6 +27,13 @@ export default class Game{
         return [this.players[0].obj.board, this.players[1].obj.board]
     }
     generatePlayerOne() {
+
+        
+
+
+
+
+
         const playerOne = this.players[0]
         playerOne.obj = new Player()
         playerOne.positions.forEach((position, index) => {

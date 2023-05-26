@@ -4,7 +4,7 @@ import Ship from "./shipCreator";
 import interactDOM from "./DOMinteraction";
 
 function gameLogic(game) {
-
+    game.generatePlayers()
     // while(game.verifyEndGame().length < 1){
 
 
