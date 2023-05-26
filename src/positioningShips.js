@@ -1,5 +1,6 @@
 import interactDOM from "./DOMinteraction"
 import { gameLogic } from "./gameLogic"
+import handleEffects from "./handleEffects"
 
 const ships = {
     size: [1,2,3,4,5],
@@ -15,21 +16,41 @@ export default function positioningShips(game) {
    
 
     function handleShipsPositioning() {
+        const startGame = interactDOM().hookDOMelement('startGame')
+        const shipsPlacement = interactDOM().hookDOMelement('shipsPlacement')
+        const placementBoard = interactDOM().hookDOMelement('placementBoard')
+        const shipsSelection = interactDOM().hookDOMelement('shipsSelection')
+        const changeAxis = interactDOM().hookDOMelement('changeAxis')
+        let cells = document.querySelectorAll('.placement-board > .game-cell')
         const coordinates = []
 
-        const startGame = interactDOM().hookDOMelement('startGame')
-        startGame.addEventListener('mousedown', e => { launchGame() })
 
-        const shipsPlacement = interactDOM().hookDOMelement('shipsPlacement')
+
+
+
+        
+        startGame.addEventListener('mousedown', e => { if(coordinates.length === 5) launchGame() })
+
+
+
+        changeAxis.addEventListener('mousedown', e => {
+            changeAxis.value = `${changeAxis.value === 'v' ? 'h' : 'v'}`
+            handleEffects()
+        })
+
+
+
+
+
+        
         interactDOM().show(shipsPlacement)
 
-        const placementBoard = interactDOM().hookDOMelement('placementBoard')
+        
 
         interactDOM().generatePositioningGameboard(placementBoard)
 
 
-        const shipsSelection = interactDOM().hookDOMelement('shipsSelection')
-        let cells = document.querySelectorAll('.placement-board > .game-cell')
+        
 
         shipsSelection.addEventListener('mousedown', e => {
             let classIdentifier
@@ -87,20 +108,24 @@ export default function positioningShips(game) {
             const currentIdNum = event.target.id.replaceAll('gameCell', '')
             // console.log(typeof(currentIdNum))
             // console.log(currentIdNum[1])
+                for (let i = 0; i < size; i++) {
+                    let elementID
+                    if(changeAxis.value === 'h'){ 
+                        elementID = 'gameCell' + `${+currentIdNum[0]}` + `${+currentIdNum[1] + i}`
+                    } else if(changeAxis.value === 'v'){
+                        elementID = 'gameCell' + `${+currentIdNum[0] + i}` + `${currentIdNum[1]}`
+                    }
+                    // console.log(elementID)
+                    const element = document.querySelector(`.placement-board > #${elementID}`)
 
-            for (let i = 0; i < size; i++) {
-                const elementID = 'gameCell' + `${+currentIdNum[0]}` + `${+currentIdNum[1] + i}`
-                // console.log(elementID)
-                const element = document.querySelector(`.placement-board > #${elementID}`)
+                    // console.log(element)
+                    if (element === null || element.value.length > 2) {
+                        break
+                    }
+                    element.classList = `game-cell ${classIdentifier}`
 
-                // console.log(element)
-                if (element === null || element.value.length > 2) {
-                    break
                 }
-                element.classList = `game-cell ${classIdentifier}`
-
-            }
-
+                
             event.target.addEventListener('mouseout', removeHoverShips)
             // console.log(elements)
 
@@ -124,16 +149,28 @@ export default function positioningShips(game) {
             let pos = []
             const positionObj = {
                 positions: [],
-                shipSize: size
+                shipSize: size,
+                axis: null
             }
 
             // ---------------------horizontal positioning
             for (let i = 0; i < size; i++) {
-                const elementID = 'gameCell' + `${+currentIdNum[0]}` + `${+currentIdNum[1] + i}`
+                let elementID
+
+                if(changeAxis.value === 'h'){
+                    elementID = 'gameCell' + `${+cell[0]}` + `${+cell[1] + i}`
+                    pos.push(+cell[0])
+                    pos.push(+cell[1] + i)
+                    positionObj.axis = 'h'
+                } else if(changeAxis.value === 'v'){
+                    elementID = 'gameCell' + `${+cell[0] + i}` + `${cell[1]}`
+                    pos.push(+cell[0]+i)
+                    pos.push(+cell[1])
+                    positionObj.axis = 'v'
+                }
                 const element = document.querySelector(`.placement-board > #${elementID}`)
                 console.log(element.value.length)
-                pos.push(+cell[0])
-                pos.push(+cell[1] + i)
+                
                 
                 if((+cell[1] + i) > 9 || element.value.length > 2){
                     break
@@ -156,18 +193,21 @@ export default function positioningShips(game) {
             const elements = []
             const classIdentifier = ships.class[size-1]
 
-
+            // ---------------------horizontal positioning
             for(let i = 0; i < coordinates.length; i++){
                 const id = 'gameCell' + `${coordinates[i][0]}` + `${coordinates[i][1]}`
                 const cell = document.querySelector(`.placement-board > #${id}`)
                 cell.value = classIdentifier
                 elements.push(cell)
             }
+            // ---------------------horizontal positioning
+
             elements.forEach(element => {
                 element.classList = `game-cell ${classIdentifier}`
             })
             console.log(elements)
         }
+
         function disablePlacedShips(shipSize){
             const index = ships.size.indexOf(shipSize)
             const containerID = ships.shipContainer[index]
@@ -183,7 +223,8 @@ export default function positioningShips(game) {
             placingCoord.forEach(elem => {
                 const obj = {
                     coord: elem.positions[0],
-                    size: elem.shipSize
+                    size: elem.shipSize,
+                    axis: elem.axis
                 }
                 placingArray.push(obj)
             })

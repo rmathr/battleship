@@ -146,7 +146,7 @@ body{
 }
 
 button:disabled{
-    filter: grayscale(50%);
+    filter: grayscale(75%);
 }
 /* #rightGameboard > #gameCell\#55{
     background-color: blueviolet;

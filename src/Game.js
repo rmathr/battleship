@@ -32,7 +32,7 @@ export default class Game{
         const playerOne = this.players[0]
         playerOne.obj = new Player()
         positions.forEach(elem => {
-            playerOne.obj.positionShip(elem.size, elem.coord)
+            playerOne.obj.positionShip(elem.size, elem.coord, elem.axis)
         })
 
         // playerOne.positions.forEach((position, index) => {

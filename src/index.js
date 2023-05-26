@@ -6,6 +6,7 @@ import Game from "./Game"
 import _ from 'lodash'
 import interactDOM from "./DOMinteraction"
 import positioningShips from "./positioningShips"
+import handleEffects from "./handleEffects"
 
 
 const newGame = new Game()
@@ -22,7 +23,7 @@ console.log(newGame)
 //     // console.log(newGame.verifyEndGame())
 // })
 positioningShips(newGame)
-
+handleEffects()
 // console.log(newGame.verifyEndGame().length)
 
 

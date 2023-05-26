@@ -46,9 +46,9 @@ class Player{
         }
         return validAttack 
     }
-    positionShip(size, coordinates){
+    positionShip(size, coordinates, axis){
         const playerShip = new Ship(size)
-        return this.board.placeShip(playerShip, coordinates)
+        return this.board.placeShip(playerShip, coordinates, axis)
     }
 }
 

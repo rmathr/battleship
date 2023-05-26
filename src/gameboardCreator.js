@@ -18,11 +18,18 @@ class Gameboard{
         this.placedShips = []
         this.sunkShips = 0
     }
-    placeShip(ship, coordinates){
+    placeShip(ship, coordinates, axis = 'h'){
             this.placedShips.push(ship)
+            // ---------------------horizontal positioning
             for(let i = 0; i < ship.size; i++){
-                this.board[coordinates[0]][coordinates[1]+i] = ship.size 
-            }   
+                if(axis === 'h'){
+                    this.board[coordinates[0]][coordinates[1]+i] = ship.size 
+                } else if(axis === 'v'){
+                    this.board[coordinates[0]+i][coordinates[1]] = ship.size 
+    
+                }
+            }     
+            // ---------------------horizontal positioning
         return this.board
     }
     receiveAttack(coordinates, container){
