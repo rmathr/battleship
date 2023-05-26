@@ -21,25 +21,25 @@ export default class Game{
         ]
         this.activePlayer = this.players[0]
     }
-    generatePlayers() {
-        this.generatePlayerOne()
+    generatePlayers(positions) {
+        this.generatePlayerOne(positions)
         this.generatePlayerTwo()
         return [this.players[0].obj.board, this.players[1].obj.board]
     }
-    generatePlayerOne() {
-
+    generatePlayerOne(positions) {
         
-
-
-
-
 
         const playerOne = this.players[0]
         playerOne.obj = new Player()
-        playerOne.positions.forEach((position, index) => {
-            // newPlayer.positionShip(index + 1, position)
-            playerOne.obj.positionShip(index + 1, position)
+        positions.forEach(elem => {
+            playerOne.obj.positionShip(elem.size, elem.coord)
         })
+
+        // playerOne.positions.forEach((position, index) => {
+        //     // newPlayer.positionShip(index + 1, position)
+        //     playerOne.obj.positionShip(index + 1, position)
+        // })
+
         let leftGameboard = interactDOM().hookDOMelement(playerOne.gameboard)
         interactDOM().appendElementAndDefineContent(leftGameboard, playerOne.obj.board.board)
     }

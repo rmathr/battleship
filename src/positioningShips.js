@@ -1,4 +1,5 @@
 import interactDOM from "./DOMinteraction"
+import { gameLogic } from "./gameLogic"
 
 const ships = {
     size: [1,2,3,4,5],
@@ -8,15 +9,16 @@ const ships = {
 
 
 
-export default function positioningShips() {
+export default function positioningShips(game) {
 
     handleShipsPositioning()
-    // const startGame = interactDOM().hookDOMelement('startGame')
-    // startGame.addEventListener('mousedown', e => { handleShipsPositioning() })
+   
 
     function handleShipsPositioning() {
         const coordinates = []
 
+        const startGame = interactDOM().hookDOMelement('startGame')
+        startGame.addEventListener('mousedown', e => { launchGame() })
 
         const shipsPlacement = interactDOM().hookDOMelement('shipsPlacement')
         interactDOM().show(shipsPlacement)
@@ -174,9 +176,9 @@ export default function positioningShips() {
             elements.forEach(element => element.disabled = true)
         }
 
-        function launchGame(coord){
-            // const placingCoord = [...coordinates]
-            const placingCoord = [...coord]
+        function launchGame(){
+            const placingCoord = [...coordinates]
+            // const placingCoord = [...coord]
             const placingArray = []
             placingCoord.forEach(elem => {
                 const obj = {
@@ -185,6 +187,8 @@ export default function positioningShips() {
                 }
                 placingArray.push(obj)
             })
+            gameLogic(game, placingArray)
+            interactDOM().hide(shipsPlacement)
             return placingArray
         }
 

@@ -21,17 +21,17 @@ console.log(newGame)
 //     // newGame.generatePlayers()
 //     // console.log(newGame.verifyEndGame())
 // })
-positioningShips()
+positioningShips(newGame)
 
 // console.log(newGame.verifyEndGame().length)
 
 
-gameLogic(newGame)
+// gameLogic(newGame)
 
-const gameboard = interactDOM().hookDOMelement('leftGameboard')
-gameboard.addEventListener('mousedown', e => {
-    console.log(e.target)
-})
+// const gameboard = interactDOM().hookDOMelement('leftGameboard')
+// gameboard.addEventListener('mousedown', e => {
+//     console.log(e.target)
+// })
 
 // interactDOM().returnClickedCoordinates('rightGameboard')
 

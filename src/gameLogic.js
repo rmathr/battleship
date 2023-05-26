@@ -3,8 +3,8 @@ import Gameboard from "./gameboardCreator";
 import Ship from "./shipCreator";
 import interactDOM from "./DOMinteraction";
 
-function gameLogic(game) {
-    game.generatePlayers()
+function gameLogic(game, positions) {
+    game.generatePlayers(positions)
     // while(game.verifyEndGame().length < 1){
 
 
