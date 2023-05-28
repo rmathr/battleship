@@ -94,8 +94,8 @@ export default function positioningShips(game) {
                 cell.addEventListener('mousedown', e => {
                     if(cell.value.length <= 2){
                         // getCorrectCoordinates(e, shipSize)
-                        const coord = getCorrectCoordinates(e, shipSize)
-                        // console.log(coord)
+                        let coord = getCorrectCoordinates(e, shipSize)
+                        console.log(coord)
                         renderShips(coord.positions, shipSize)
                         cells.forEach(cell => cell.replaceWith(cell.cloneNode(true)));
                     }
@@ -156,7 +156,7 @@ export default function positioningShips(game) {
             // ---------------------horizontal positioning
             for (let i = 0; i < size; i++) {
                 let elementID
-
+                console.log(changeAxis)
                 if(changeAxis.value === 'h'){
                     elementID = 'gameCell' + `${+cell[0]}` + `${+cell[1] + i}`
                     pos.push(+cell[0])
@@ -172,7 +172,12 @@ export default function positioningShips(game) {
                 console.log(element.value.length)
                 
                 
-                if((+cell[1] + i) > 9 || element.value.length > 2){
+
+
+
+                if ((changeAxis.value === 'v' && (+cell[0] + i) > 9)
+                    || (changeAxis.value === 'h' && (+cell[1] + i) > 9)
+                    || element.value.length > 2) {
                     break
                 }
                 positionObj.positions.push(pos)

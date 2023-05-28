@@ -2,6 +2,7 @@ import {Player} from "./Player";
 import Gameboard from "./gameboardCreator";
 import Ship from "./shipCreator";
 import interactDOM from "./DOMinteraction";
+import handleEffects from "./handleEffects";
 
 function gameLogic(game, positions) {
     game.generatePlayers(positions)
@@ -19,6 +20,7 @@ function gameLogic(game, positions) {
         console.log(game.players[0].obj.attackBoard(game.players[1].obj, coordinates))
         // console.log(game.verifyEndGame().length)
         // if(game.verifyEndGame().length > 0) return true
+        handleEffects()
         game.verifyEndGame()
         if (game.verifyEndGame().length < 1){
             game.switchPlayerTurn()
