@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Bowlby+One+SC&family=Roboto:wght@100;400;700&display=swap');
+
+:root{
+    --gameboard-background: #F0FFFF;
+    --background-color: #FAF9F6;
+    --gamecell-background: #ADD8E6;
+}
+
+
+
 *{
     margin: 0;
     padding: 0;
@@ -5,10 +15,11 @@
 }
 
 body{
-    background-color: deeppink;
+    background-color: var(--background-color);
     width: 100%;
     height: 100dvh;
     display: flex;
+    font-family: 'Bowlby One SC', cursive;
 }
 
 .main-container{
@@ -24,6 +35,11 @@ body{
     align-items: center;
 }
 
+.header-title{
+    font-family: 'Bowlby One SC', cursive;
+    font-size: 4rem;
+}
+
 .gameboards-container{
     flex-grow: 1;
     display: flex;
@@ -33,8 +49,15 @@ body{
     width: 100%;
 }
 
+.player-gameboard, .computer-gameboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
 .gameboard{
-    background-color: greenyellow;
+    background-color: var(--gameboard-background);
     width: 450px;
     height: 450px;
     display: flex;
@@ -46,21 +69,54 @@ body{
     width: 42px;
     height: 42px;
     border: none;
+    
+}
+
+#rightGameboard > .game-cell{
     cursor: pointer;
 }
 
-.start-game{
-    width: 100px;
+.gameboard > .game-cell{
+    /* border: 1px solid black; */
+    background-color: var(--gamecell-background);
+}
+
+
+.gameboard-text{
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.2rem;
+    font-family: 'Bowlby One SC', cursive;
+}
+
+
+/* ======================================= ships-placement ======================================= */
+.start-game, .change-axis{
+    min-width: 100px;
     height: fit-content;
     cursor: pointer;
     border: none;
-    margin-bottom: 45px;
+    /* margin-bottom: 45px; */
+    margin: 12px 0;
+    background-color: #E5E4E2;
+    border-radius: 3px;
+    padding: 4px;
+    font-size: 1.1rem;
+}
+
+.change-axis{
+    /* margin: 12px 0 0 0; */
+    width: fit-content
 }
 
 .ships-placement{
     width: 450px;
-    height: 600px;
-    background-color: cornsilk;
+    min-height: 600px;
+    height: fit-content;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--background-color);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -70,6 +126,15 @@ body{
     flex-direction: column;
     align-items: center;
     padding-top: 12px;
+    box-shadow: rgba(18, 18, 18, 0.8) 0px 22px 700px 4000px;
+}
+
+.placement-header{
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    font-style: italic;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 12px;
 }
 
 .placement-board{
@@ -84,9 +149,14 @@ body{
 .placement-board > .game-cell, .ship-square{
     width: 29px;
     height: 29px;
-    background-color: aqua;
     border: 1px solid white;
 }
+
+.placement-board > .game-cell{
+    background-color: var(--gamecell-background);
+    /* border: none; */
+}
+
 
 .cells-ship{
     display: flex;
@@ -96,12 +166,17 @@ body{
     margin-bottom: 5px;
 }
 
+.ship-square{
+    cursor: pointer;
+}
+
 .ships-selection{
-    margin-top: 36px;
+    /* margin: 12px 0; */
     padding: 0 5px;
     display: flex;
     flex-direction: column;
-    height: 150px;
+    align-items: center;
+    height: fit-content;
     width: 300px;
 }
 
@@ -147,6 +222,12 @@ body{
 
 button:disabled{
     filter: grayscale(75%);
+    cursor: not-allowed;
+    transform: translateY(0px);
+}
+
+.cells-ship:active{
+    transform: translateY(3px);
 }
 /* #rightGameboard > #gameCell\#55{
     background-color: blueviolet;

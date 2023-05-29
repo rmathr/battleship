@@ -11,14 +11,22 @@
 <body>
     <div class="main-container" id="mainContainer">
         <section class="main-content" id="mainContent">
+            <header class="header-title">Battleship</header>
             <section class="gameboards-container" id="gameboardsContainer">
-                <section class="gameboard" id="leftGameboard"></section>
-                <section class="gameboard" id="rightGameboard"></section>
+                <div class="player-gameboard">
+                    <p class="gameboard-text">Your gameboard</p>
+                    <section class="gameboard" id="leftGameboard"></section>
+                </div>
+                <div class="computer-gameboard">
+                    <p class="gameboard-text">Computer's gameboard</p>
+                    <section class="gameboard" id="rightGameboard"></section>
+                </div>
             </section>
-
+        
         </section>
 
         <section class="ships-placement" id="shipsPlacement" style="display: none;">
+            <p class="placement-header">Place your fleet!</p>
             <section class="placement-board" id="placementBoard"></section>
 
             <button class="change-axis" id="changeAxis" value="h"></button>
