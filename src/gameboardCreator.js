@@ -84,4 +84,4 @@ function returnCoordinates(array, value){
 
 
 
-export default Gameboard
+export { Gameboard, returnCoordinates }

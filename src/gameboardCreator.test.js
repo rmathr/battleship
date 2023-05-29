@@ -1,4 +1,4 @@
-import Gameboard from "./gameboardCreator";
+import {Gameboard} from "./gameboardCreator";
 import Ship from "./shipCreator";
 
 test('Placing a ship on a given position', () =>{

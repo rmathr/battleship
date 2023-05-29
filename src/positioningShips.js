@@ -95,7 +95,7 @@ export default function positioningShips(game) {
                     if(cell.value.length <= 2){
                         // getCorrectCoordinates(e, shipSize)
                         let coord = getCorrectCoordinates(e, shipSize)
-                        console.log(coord)
+                        // console.log(coord)
                         renderShips(coord.positions, shipSize)
                         cells.forEach(cell => cell.replaceWith(cell.cloneNode(true)));
                     }
@@ -156,7 +156,7 @@ export default function positioningShips(game) {
             // ---------------------horizontal positioning
             for (let i = 0; i < size; i++) {
                 let elementID
-                console.log(changeAxis)
+                // console.log(changeAxis)
                 if(changeAxis.value === 'h'){
                     elementID = 'gameCell' + `${+cell[0]}` + `${+cell[1] + i}`
                     pos.push(+cell[0])
@@ -169,7 +169,7 @@ export default function positioningShips(game) {
                     positionObj.axis = 'v'
                 }
                 const element = document.querySelector(`.placement-board > #${elementID}`)
-                console.log(element.value.length)
+                // console.log(element.value.length)
                 
                 
 
@@ -189,7 +189,7 @@ export default function positioningShips(game) {
             if(positionObj.positions.length < size) return
             coordinates.push(positionObj)
             disablePlacedShips(size)
-            console.log(coordinates)
+            // console.log(coordinates)
             // removeHoverShips(e)
             // renderShips(positionObj.positions, size)
             return positionObj
@@ -210,7 +210,7 @@ export default function positioningShips(game) {
             elements.forEach(element => {
                 element.classList = `game-cell ${classIdentifier}`
             })
-            console.log(elements)
+            // console.log(elements)
         }
 
         function disablePlacedShips(shipSize){

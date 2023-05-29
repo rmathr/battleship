@@ -1,5 +1,5 @@
 import {Player} from "./Player";
-import Gameboard from "./gameboardCreator";
+import {Gameboard} from "./gameboardCreator";
 import Ship from "./shipCreator";
 import interactDOM from "./DOMinteraction";
 import handleEffects from "./handleEffects";

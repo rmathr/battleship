@@ -44,9 +44,15 @@ export default class Game{
         interactDOM().appendElementAndDefineContent(leftGameboard, playerOne.obj.board.board)
     }
     generatePlayerTwo(){
-        const player2 = this.players[1]
 
+        const player2 = this.players[1]
         player2.obj = new Player()
+
+        const positions = generateCoordinates(5)
+        positions.forEach(elem => {
+            player2.obj.positionShip(elem.size, elem.coord, elem.axis)
+        })
+        /*
         player2.obj.positionShip(1, player2.positions[0])
         
         while(player2.positions[1][0] === player2.positions[0][0]){
@@ -74,6 +80,9 @@ export default class Game{
             player2.positions[4] = generateCoordinates(5)
         }
         player2.obj.positionShip(5, player2.positions[4])
+        */
+
+
         let rightGameboard = interactDOM().hookDOMelement(player2.gameboard)
         interactDOM().appendElementAndDefineContent(rightGameboard, player2.obj.board.board)
     }
