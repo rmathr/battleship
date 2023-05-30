@@ -1,7 +1,5 @@
 import interactDOM from "./DOMinteraction";
-import splash from "./icons/splash.png"
-import target from "./icons/target.png"
-import { returnCoordinates } from "./gameboardCreator";
+
 
 export default function handleEffects(){
 
@@ -12,13 +10,23 @@ export default function handleEffects(){
     const rightGameboard = interactDOM().hookDOMelement('rightGameboard')
     const AIcells = document.querySelectorAll('#rightGameboard > .game-cell')
     AIcells.forEach(cell => {
-        if(cell.textContent == "hit" || cell.textContent == "missed") cell.disabled = true
+        cell.textContent = ''
+        if(cell.value == "hit"){
+            cell.classList.add('hit')
+            cell.disabled = true
+        }  
+        if(cell.value == "missed"){
+            cell.classList.add('missed')
+            cell.disabled = true
+        }
+        // if(cell.textContent == "hit" || cell.textContent == "missed") cell.disabled = true
         if(cell.disabled == true) cell.style.cursor = "not-allowed"
     })
 
+    const playerCells = document.querySelectorAll('#leftGameboard > .game-cell')
     const gamecells = document.querySelectorAll('.gameboard > .game-cell')
 
-    gamecells.forEach(cell => {
+    playerCells.forEach(cell => {
         if(cell.textContent == "hit"){
             cell.classList.add('hit')
             cell.textContent = ''

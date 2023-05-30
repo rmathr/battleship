@@ -274,20 +274,10 @@ body{
     background-image: url("./icons/explosion.png");
     background-size: cover;
     background-repeat: no-repeat;
-    opacity: 1;
-    /* color: var(--gamecell-background); */
 }
 
 .missed{
     background-image: url("./icons/splash.png");
     background-size: cover;
     background-repeat: no-repeat;
-    /* color: var(--gamecell-background); */
 }
-/* #rightGameboard > #gameCell\#55{
-    background-color: blueviolet;
-} */
-
-/* #rightGameboard > button.game-cell{
-    background-color: blueviolet
-} */

@@ -1,5 +1,6 @@
 import _ from 'lodash'
 import { restartGame } from './gameLogic'
+import battleship from './icons/battleship.png'
 
 const interactDOM = function(){
 
@@ -56,42 +57,27 @@ const interactDOM = function(){
     const updateElementValue = function(container, elementId, text){
         const cell = document.querySelector(`#${container} > #${elementId}`)
         cell.textContent = text 
+        cell.value = text
     }
 
     const handleWinAnimation = function(defeated){
         const endGameText = interactDOM().hookDOMelement('endGameText')
         endGameText.textContent = `${defeated[0].name == 'Computer' ? 'Congratulations! You Win.' : 'Oh no! You lost.'}`
-        
-        
-        console.log(defeated[0].name)
-        
         const buttons = document.querySelectorAll('#rightGameboard > button.game-cell')
         buttons.forEach(button => {
             button.disabled = true
             button.classList.add('end-game')
         })
-
         const gameOver = interactDOM().hookDOMelement('gameOver')
         interactDOM().show(gameOver)
         restartGame()
     }
 
-
-
-    
-
     const returnClickedCoordinates = function(event){
             const coordinates = []
             coordinates.push(+event.target.id.replaceAll('gameCell', '').charAt(0)) 
             coordinates.push(+event.target.id.replaceAll('gameCell', '').charAt(1)) 
-            // console.log(coordinates)
             return coordinates
-            // console.log(playerOne.attackBoard(playerTwo, coordinates))
-    }
-
-    const formReset = function(formId){
-    const form = interactDOM().hookDOMelement(`${formId}`)
-    form.reset()    
     }
 
     const hide = function(element){
@@ -108,7 +94,6 @@ const interactDOM = function(){
         getInputValue, 
         returnAllMatchingElements,
         appendElementAndDefineContent,
-        formReset,
         generatePositioningGameboard,
         updateElementValue,
         handleWinAnimation,
@@ -119,5 +104,15 @@ const interactDOM = function(){
 
 
 }
+
+const handleIcon = (function(){
+   
+    
+    const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+    link.type = 'image/png';
+    link.rel = 'shortcut icon';
+    link.href = battleship;
+    document.getElementsByTagName('head')[0].appendChild(link);
+})()
 
 export default interactDOM
