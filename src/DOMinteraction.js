@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import { restartGame } from './gameLogic'
 
 const interactDOM = function(){
 
@@ -57,12 +58,22 @@ const interactDOM = function(){
         cell.textContent = text 
     }
 
-    const handleWinAnimation = function(){
+    const handleWinAnimation = function(defeated){
+        const endGameText = interactDOM().hookDOMelement('endGameText')
+        endGameText.textContent = `${defeated[0].name == 'Computer' ? 'Congratulations! You Win.' : 'Oh no! You lost.'}`
+        
+        
+        console.log(defeated[0].name)
+        
         const buttons = document.querySelectorAll('#rightGameboard > button.game-cell')
         buttons.forEach(button => {
             button.disabled = true
             button.classList.add('end-game')
         })
+
+        const gameOver = interactDOM().hookDOMelement('gameOver')
+        interactDOM().show(gameOver)
+        restartGame()
     }
 
 
@@ -73,23 +84,10 @@ const interactDOM = function(){
             const coordinates = []
             coordinates.push(+event.target.id.replaceAll('gameCell', '').charAt(0)) 
             coordinates.push(+event.target.id.replaceAll('gameCell', '').charAt(1)) 
-            console.log(coordinates)
+            // console.log(coordinates)
             return coordinates
             // console.log(playerOne.attackBoard(playerTwo, coordinates))
     }
-
-    // const returnClickedCoordinates = function(gameboard){
-    //     const gameboardContainer = interactDOM().hookDOMelement(gameboard)  
-    //     gameboardContainer.addEventListener('mousedown', e => {
-    //         const coordinates = []
-    //         coordinates.push(+e.target.id.replaceAll('gameCell#', '').charAt(0)) 
-    //         coordinates.push(+e.target.id.replaceAll('gameCell#', '').charAt(1)) 
-    //         console.log(coordinates)
-    //         return coordinates
-    //         // console.log(playerOne.attackBoard(playerTwo, coordinates))
-    //     }) 
-    // }
-
 
     const formReset = function(formId){
     const form = interactDOM().hookDOMelement(`${formId}`)

@@ -12,29 +12,8 @@ import handleEffects from "./handleEffects"
 
 const newGame = new Game()
 console.log(newGame)
-// newGame.generatePlayers()
-// console.log(newGame.activePlayer)
 
-// const startGame = interactDOM().hookDOMelement('startGame')
-// startGame.addEventListener('mousedown', e => {
-//     const shipsPlacement = interactDOM().hookDOMelement('shipsPlacement')
-//     interactDOM().show(shipsPlacement)
-    
-//     // newGame.generatePlayers()
-//     // console.log(newGame.verifyEndGame())
-// })
 positioningShips(newGame)
 handleEffects()
-// console.log(newGame.verifyEndGame().length)
-
-
-// gameLogic(newGame)
-
-// const gameboard = interactDOM().hookDOMelement('leftGameboard')
-// gameboard.addEventListener('mousedown', e => {
-//     console.log(e.target)
-// })
-
-// interactDOM().returnClickedCoordinates('rightGameboard')
 
 

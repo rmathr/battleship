@@ -52,37 +52,7 @@ export default class Game{
         positions.forEach(elem => {
             player2.obj.positionShip(elem.size, elem.coord, elem.axis)
         })
-        /*
-        player2.obj.positionShip(1, player2.positions[0])
         
-        while(player2.positions[1][0] === player2.positions[0][0]){
-            player2.positions[1] = generateCoordinates(2)
-        }
-        player2.obj.positionShip(2, player2.positions[1])
-
-        while(player2.positions[2][0] === player2.positions[1][0] ||
-            player2.positions[2][0] === player2.positions[0][0]){
-            player2.positions[2] = generateCoordinates(3)
-        }
-        player2.obj.positionShip(3, player2.positions[2])
-
-        while(player2.positions[3][0] === player2.positions[2][0] ||
-            player2.positions[3][0] === player2.positions[1][0] ||
-            player2.positions[3][0] === player2.positions[0][0]){
-            player2.positions[3] = generateCoordinates(4)
-        }
-        player2.obj.positionShip(4, player2.positions[3])
-
-        while(player2.positions[4][0] === player2.positions[3][0] ||
-            player2.positions[4][0] === player2.positions[2][0] ||
-            player2.positions[4][0] === player2.positions[1][0] ||
-            player2.positions[4][0] === player2.positions[0][0]){
-            player2.positions[4] = generateCoordinates(5)
-        }
-        player2.obj.positionShip(5, player2.positions[4])
-        */
-
-
         let rightGameboard = interactDOM().hookDOMelement(player2.gameboard)
         interactDOM().appendElementAndDefineContent(rightGameboard, player2.obj.board.board)
     }
@@ -98,7 +68,7 @@ export default class Game{
         // const sunkPlayer = this.players.map(player => player.obj.board)
         if(sunkPlayer.length > 0) {
             // alert('wow')
-            interactDOM().handleWinAnimation()
+            interactDOM().handleWinAnimation(sunkPlayer)
         }
 
         return sunkPlayer

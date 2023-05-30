@@ -23,13 +23,9 @@ export default function positioningShips(game) {
         const changeAxis = interactDOM().hookDOMelement('changeAxis')
         let cells = document.querySelectorAll('.placement-board > .game-cell')
         const coordinates = []
-
-
-
-
-
         
-        startGame.addEventListener('mousedown', e => { if(coordinates.length === 5) launchGame() })
+        startGame.addEventListener('mousedown', e => { 
+            if(coordinates.length === 5) launchGame() })
 
 
 
@@ -38,19 +34,8 @@ export default function positioningShips(game) {
             handleEffects()
         })
 
-
-
-
-
-        
         interactDOM().show(shipsPlacement)
-
-        
-
         interactDOM().generatePositioningGameboard(placementBoard)
-
-
-        
 
         shipsSelection.addEventListener('mousedown', e => {
             let classIdentifier
@@ -58,7 +43,6 @@ export default function positioningShips(game) {
             if (e.target.closest('#fiveCellsShip')) {
                 classIdentifier = ships.class[4]
                 shipSize = ships.size[4]
-                // console.log('aaaa')
                 handleHoverListeners(shipSize, classIdentifier)
             } else if (e.target.closest('#fourCellsShip')) {
                 classIdentifier = ships.class[3]
@@ -88,14 +72,11 @@ export default function positioningShips(game) {
             cells.forEach(cell => {
                 cell.addEventListener('mouseover', event => {
 
-                    // console.log(shipSize)
                     displayHoverShips(event, shipSize, classIdentifier)
                 })
                 cell.addEventListener('mousedown', e => {
                     if(cell.value.length <= 2){
-                        // getCorrectCoordinates(e, shipSize)
                         let coord = getCorrectCoordinates(e, shipSize)
-                        // console.log(coord)
                         renderShips(coord.positions, shipSize)
                         cells.forEach(cell => cell.replaceWith(cell.cloneNode(true)));
                     }
@@ -106,8 +87,6 @@ export default function positioningShips(game) {
 
         function displayHoverShips(event, size, classIdentifier) {
             const currentIdNum = event.target.id.replaceAll('gameCell', '')
-            // console.log(typeof(currentIdNum))
-            // console.log(currentIdNum[1])
                 for (let i = 0; i < size; i++) {
                     let elementID
                     if(changeAxis.value === 'h'){ 
@@ -115,10 +94,7 @@ export default function positioningShips(game) {
                     } else if(changeAxis.value === 'v'){
                         elementID = 'gameCell' + `${+currentIdNum[0] + i}` + `${currentIdNum[1]}`
                     }
-                    // console.log(elementID)
                     const element = document.querySelector(`.placement-board > #${elementID}`)
-
-                    // console.log(element)
                     if (element === null || element.value.length > 2) {
                         break
                     }
@@ -127,36 +103,26 @@ export default function positioningShips(game) {
                 }
                 
             event.target.addEventListener('mouseout', removeHoverShips)
-            // console.log(elements)
-
         }
 
         function removeHoverShips(e) {
             
             const elements = document.querySelectorAll('.placement-board > .game-cell')
-            // console.log(currentIdNum)
             elements.forEach(element => {
                 if(element.value.length <= 2) element.classList = `game-cell`
             })
-            // e.target.addEventListener('mouseout', removeHoverShips)
         }
 
         function getCorrectCoordinates(e, size){
-            const currentIdNum = e.target.id.replaceAll('gameCell', '')
-            // console.log(e.target.value)
             const cell = e.target.id.replaceAll('gameCell', '')
-            // console.log(cell[1])
             let pos = []
             const positionObj = {
                 positions: [],
                 shipSize: size,
                 axis: null
             }
-
-            // ---------------------horizontal positioning
             for (let i = 0; i < size; i++) {
                 let elementID
-                // console.log(changeAxis)
                 if(changeAxis.value === 'h'){
                     elementID = 'gameCell' + `${+cell[0]}` + `${+cell[1] + i}`
                     pos.push(+cell[0])
@@ -169,12 +135,6 @@ export default function positioningShips(game) {
                     positionObj.axis = 'v'
                 }
                 const element = document.querySelector(`.placement-board > #${elementID}`)
-                // console.log(element.value.length)
-                
-                
-
-
-
                 if ((changeAxis.value === 'v' && (+cell[0] + i) > 9)
                     || (changeAxis.value === 'h' && (+cell[1] + i) > 9)
                     || element.value.length > 2) {
@@ -183,47 +143,34 @@ export default function positioningShips(game) {
                 positionObj.positions.push(pos)
                 pos = []
             }
-            // ---------------------horizontal positioning
-
-
             if(positionObj.positions.length < size) return
             coordinates.push(positionObj)
             disablePlacedShips(size)
-            // console.log(coordinates)
-            // removeHoverShips(e)
-            // renderShips(positionObj.positions, size)
             return positionObj
         }
         function renderShips(coordinates, size){
             const elements = []
             const classIdentifier = ships.class[size-1]
-
-            // ---------------------horizontal positioning
             for(let i = 0; i < coordinates.length; i++){
                 const id = 'gameCell' + `${coordinates[i][0]}` + `${coordinates[i][1]}`
                 const cell = document.querySelector(`.placement-board > #${id}`)
                 cell.value = classIdentifier
                 elements.push(cell)
             }
-            // ---------------------horizontal positioning
-
             elements.forEach(element => {
                 element.classList = `game-cell ${classIdentifier}`
             })
-            // console.log(elements)
         }
 
         function disablePlacedShips(shipSize){
             const index = ships.size.indexOf(shipSize)
             const containerID = ships.shipContainer[index]
-            // const container = interactDOM().hookDOMelement(containerID)
             const elements = document.querySelectorAll(`#${containerID} > .ship-square`)
             elements.forEach(element => element.disabled = true)
         }
 
         function launchGame(){
             const placingCoord = [...coordinates]
-            // const placingCoord = [...coord]
             const placingArray = []
             placingCoord.forEach(elem => {
                 const obj = {
@@ -235,14 +182,9 @@ export default function positioningShips(game) {
             })
             gameLogic(game, placingArray)
             interactDOM().hide(shipsPlacement)
+            startGame.replaceWith(startGame.cloneNode(true))
             handleEffects()
             return placingArray
         }
-
-
     }
-
-
-
-
 }

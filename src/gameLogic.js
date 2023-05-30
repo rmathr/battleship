@@ -19,14 +19,14 @@ function gameLogic(game, positions) {
 
     function handleClick(e) {
         const coordinates = interactDOM().returnClickedCoordinates(e)
-        console.log(game.players[0].obj.attackBoard(game.players[1].obj, coordinates))
+        game.players[0].obj.attackBoard(game.players[1].obj, coordinates)
         // console.log(game.verifyEndGame().length)
         // if(game.verifyEndGame().length > 0) return true
         handleEffects()
         game.verifyEndGame()
         if (game.verifyEndGame().length < 1){
             game.switchPlayerTurn()
-            if (game.activePlayer === game.players[1]) console.log(game.players[1].obj.randomAttack(game.players[0].obj))
+            if (game.activePlayer === game.players[1]) game.players[1].obj.randomAttack(game.players[0].obj)
             handleEffects()
             game.verifyEndGame()
             game.switchPlayerTurn()
@@ -35,15 +35,21 @@ function gameLogic(game, positions) {
         // console.log(game.verifyEndGame().length)
     }
 
-    // if(game.verifyEndGame().length === 0) console.log("End game!!")
 
 }
 
 function restartGame(){
-    const newGame = new Game()
-    positioningShips(newGame)
-    handleEffects()
+    const gameRestart = interactDOM().hookDOMelement('restartGame')
+    const gameOver = interactDOM().hookDOMelement('gameOver')
+
+
+    gameRestart.addEventListener('mousedown', e=> {
+        location.reload()
+    })
+    
+    
+    
 }
 
 
-export { gameLogic }
+export { gameLogic, restartGame }

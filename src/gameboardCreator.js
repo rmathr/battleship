@@ -49,7 +49,7 @@ class Gameboard{
             this.board[coordinates[0]][coordinates[1]] = "missed"
         }
         const elementId = 'gameCell' + `${coordinates[0]}${coordinates[1]}`
-        console.log(elementId)
+        // console.log(elementId)
         interactDOM().updateElementValue(container, elementId, this.board[coordinates[0]][coordinates[1]])
         return `${this.board[coordinates[0]][coordinates[1]]} in [${coordinates}]`
     }
