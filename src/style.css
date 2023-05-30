@@ -110,7 +110,7 @@ body{
     width: fit-content
 }
 
-.ships-placement{
+.ships-placement, .game-over{
     width: 450px;
     min-height: 600px;
     height: fit-content;
@@ -180,6 +180,15 @@ body{
     width: 300px;
 }
 
+
+.game-over{
+    width: 450px;
+    min-height: 300px;
+    height: fit-content;
+}
+
+
+
 #fiveCellsShip > .ship-square{
     background-color: red;
 }
@@ -220,14 +229,38 @@ body{
     background-color: blue;
 }
 
-button:disabled{
+.cells-ship > button:disabled{
     filter: grayscale(75%);
     cursor: not-allowed;
     transform: translateY(0px);
 }
 
+.end-game{
+    filter: grayscale(75%); 
+}
+
 .cells-ship:active{
     transform: translateY(3px);
+}
+
+.gameboard-icon{
+    width: 36px;
+    height: auto;
+}
+
+.hit{
+    background-image: url("./icons/explosion.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 1;
+    /* color: var(--gamecell-background); */
+}
+
+.missed{
+    background-image: url("./icons/splash.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* color: var(--gamecell-background); */
 }
 /* #rightGameboard > #gameCell\#55{
     background-color: blueviolet;

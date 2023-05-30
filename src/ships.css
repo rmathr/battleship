@@ -1,0 +1,125 @@
+.ships{
+    /* background-image: url("./icons/target.png"); */
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.ship11{
+    background-image: url("./icons/ships/ship11.png")
+}
+
+.ship11v{
+    background-image: url("./icons/ships/ship11v.png")
+}
+
+.ship21{
+    background-image: url("./icons/ships/ship21.png")
+}
+
+.ship22{
+    background-image: url("./icons/ships/ship22.png")
+}
+
+.ship21v{
+    background-image: url("./icons/ships/ship21v.png")
+}
+
+.ship22v{
+    background-image: url("./icons/ships/ship22v.png")
+}
+
+.ship31{
+    background-image: url("./icons/ships/ship31.png")
+}
+
+.ship32{
+    background-image: url("./icons/ships/ship32.png")
+}
+
+.ship33{
+    background-image: url("./icons/ships/ship33.png")
+}
+
+.ship31v{
+    background-image: url("./icons/ships/ship31v.png")
+}
+
+.ship32v{
+    background-image: url("./icons/ships/ship32v.png")
+}
+
+.ship33v{
+    background-image: url("./icons/ships/ship33v.png")
+}
+
+.ship41{
+    background-image: url("./icons/ships/ship41.png")
+}
+
+.ship42{
+    background-image: url("./icons/ships/ship42.png")
+}
+
+.ship43{
+    background-image: url("./icons/ships/ship43.png")
+}
+
+.ship44{
+    background-image: url("./icons/ships/ship44.png")
+}
+
+.ship41v{
+    background-image: url("./icons/ships/ship41v.png")
+}
+
+.ship42v{
+    background-image: url("./icons/ships/ship42v.png")
+}
+
+.ship43v{
+    background-image: url("./icons/ships/ship43v.png")
+}
+
+.ship44v{
+    background-image: url("./icons/ships/ship44v.png")
+}
+
+.ship51{
+    background-image: url("./icons/ships/ship51.png")
+}
+
+.ship52{
+    background-image: url("./icons/ships/ship52.png")
+}
+
+.ship53{
+    background-image: url("./icons/ships/ship53.png")
+}
+
+.ship54{
+    background-image: url("./icons/ships/ship54.png")
+}
+
+.ship55{
+    background-image: url("./icons/ships/ship55.png")
+}
+
+.ship51v{
+    background-image: url("./icons/ships/ship51v.png")
+}
+
+.ship52v{
+    background-image: url("./icons/ships/ship52v.png")
+}
+
+.ship53v{
+    background-image: url("./icons/ships/ship53v.png")
+}
+
+.ship54v{
+    background-image: url("./icons/ships/ship54v.png")
+}
+
+.ship55v{
+    background-image: url("./icons/ships/ship55v.png")
+}

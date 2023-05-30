@@ -23,9 +23,12 @@ class Gameboard{
             // ---------------------horizontal positioning
             for(let i = 0; i < ship.size; i++){
                 if(axis === 'h'){
-                    this.board[coordinates[0]][coordinates[1]+i] = ship.size 
+                    // this.board[coordinates[0]][coordinates[1]+i] = ship.size 
+                    this.board[coordinates[0]][coordinates[1]+i] = `${ship.size}${i+1}${axis}` 
+
                 } else if(axis === 'v'){
-                    this.board[coordinates[0]+i][coordinates[1]] = ship.size 
+                    // this.board[coordinates[0]+i][coordinates[1]] = ship.size 
+                    this.board[coordinates[0]+i][coordinates[1]] = `${ship.size}${i+1}${axis}`
     
                 }
             }     
@@ -38,7 +41,7 @@ class Gameboard{
             return false
         }
         if(this.board[coordinates[0]][coordinates[1]] != "0"){
-            const ship = this.placedShips.filter(ship => ship.size == this.board[coordinates[0]][coordinates[1]])
+            const ship = this.placedShips.filter(ship => ship.size == this.board[coordinates[0]][coordinates[1]].charAt(0))
             ship[0].hit()
             // console.log(ship)
             this.board[coordinates[0]][coordinates[1]] = "hit"

@@ -1,3 +1,4 @@
+import "./ships.css"
 import "./style.css"
 import { gameLogic } from "./gameLogic"
 import { generatePlayers } from "./gameLogic"

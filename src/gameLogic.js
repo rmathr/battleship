@@ -3,6 +3,8 @@ import {Gameboard} from "./gameboardCreator";
 import Ship from "./shipCreator";
 import interactDOM from "./DOMinteraction";
 import handleEffects from "./handleEffects";
+import Game from "./Game";
+import positioningShips from "./positioningShips";
 
 function gameLogic(game, positions) {
     game.generatePlayers(positions)
@@ -25,6 +27,7 @@ function gameLogic(game, positions) {
         if (game.verifyEndGame().length < 1){
             game.switchPlayerTurn()
             if (game.activePlayer === game.players[1]) console.log(game.players[1].obj.randomAttack(game.players[0].obj))
+            handleEffects()
             game.verifyEndGame()
             game.switchPlayerTurn()
         }
@@ -36,7 +39,11 @@ function gameLogic(game, positions) {
 
 }
 
-
+function restartGame(){
+    const newGame = new Game()
+    positioningShips(newGame)
+    handleEffects()
+}
 
 
 export { gameLogic }

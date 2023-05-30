@@ -59,7 +59,10 @@ const interactDOM = function(){
 
     const handleWinAnimation = function(){
         const buttons = document.querySelectorAll('#rightGameboard > button.game-cell')
-        buttons.forEach(button => button.disabled = true)
+        buttons.forEach(button => {
+            button.disabled = true
+            button.classList.add('end-game')
+        })
     }
 
 

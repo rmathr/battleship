@@ -235,6 +235,7 @@ export default function positioningShips(game) {
             })
             gameLogic(game, placingArray)
             interactDOM().hide(shipsPlacement)
+            handleEffects()
             return placingArray
         }
 
